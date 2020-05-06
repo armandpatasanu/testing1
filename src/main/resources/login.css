@@ -1,0 +1,20 @@
+#logInButton{
+    -fx-background-color: #dcdcdc;
+    -fx-text-fill: #000000;
+    -fx-border-color: #000000;
+    -fx-border-radius: 1pt;
+}
+#signUpButton{
+    -fx-background-color: #D35034;
+    -fx-text-fill:  #DFCFCB;
+    -fx-font-weight:  bold;
+    -fx-border-radius: 2pt;
+}
+#signUpButton:hover{
+    -fx-background-color: #922B21;
+    -fx-text-fill: #FFFFFF;
+}
+#logInButton:hover{
+    -fx-background-color: #F03F2D;
+    -fx-text-fill: #FFFFFF;
+}

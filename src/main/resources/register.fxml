@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.Blend?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane fx:id="anchorpane" prefHeight="400.0" prefWidth="708.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.loose.oose.fis.project.controllers.registerController">
+    <children>
+        <ImageView fitHeight="400.0" fitWidth="708.0" pickOnBounds="true">
+            <image>
+                <Image url="@registerback.jpg" />
+            </image>
+        </ImageView>
+        <AnchorPane layoutX="104.0" layoutY="25.0" opacity="0.7" prefHeight="350.0" prefWidth="500.0" style="-fx-background-color: #ffffff; -fx-border-color: #292B48; -fx-border-width: 6pt;" stylesheets="@register.css">
+            <children>
+                <TextField fx:id="userfield" layoutX="241.0" layoutY="175.0" prefHeight="25.0" prefWidth="181.0" promptText="Username" />
+                <TextField fx:id="emailfield" layoutX="241.0" layoutY="209.0" prefHeight="25.0" prefWidth="181.0" promptText="E-mail" />
+                <PasswordField fx:id="passwordfield" layoutX="241.0" layoutY="243.0" prefHeight="25.0" prefWidth="181.0" promptText="Password" />
+                <FontAwesomeIconView glyphName="BOOK" layoutX="90.0" layoutY="96.0" size="55" />
+                <Label fx:id="lblRegister" layoutX="53.0" layoutY="115.0" prefHeight="45.0" prefWidth="134.0" text="Register" textAlignment="CENTER">
+                    <font>
+                        <Font size="30.0" />
+                    </font>
+                </Label>
+                <Button fx:id="createAccButton" layoutX="269.0" layoutY="289.0" mnemonicParsing="false" onAction="#createAccountHandler" prefHeight="32.0" prefWidth="126.0" text="Create Account">
+                    <cursor>
+                        <Cursor fx:constant="HAND" />
+                    </cursor>
+                </Button>
+                <TextField fx:id="lnamefield" layoutX="241.0" layoutY="140.0" prefHeight="25.0" prefWidth="181.0" promptText="Last Name" />
+                <TextField fx:id="fnamefield" layoutX="241.0" layoutY="105.0" prefHeight="25.0" prefWidth="181.0" promptText="First Name" />
+                <Text fx:id="registerMessage" fill="#ee4b4b" fontSmoothingType="LCD" layoutX="221.0" layoutY="62.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-weight: bold;" textAlignment="CENTER" wrappingWidth="243.13671875" />
+            <Button fx:id="haveAccountButton" layoutX="40.0" layoutY="178.0" mnemonicParsing="false" onAction="#backToLoginHandler" prefHeight="32.0" prefWidth="151.0" text="I already have an account">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+            </children>
+            <effect>
+                <Blend mode="RED" />
+            </effect>
+        </AnchorPane>
+    </children>
+</AnchorPane>

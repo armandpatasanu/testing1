@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="fontawesomeicons">
+    <CLASSES>
+      <root url="jar://D:/fontawesomefx-8.9.jar!/de/jensd/fx/glyphs/fontawesome" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

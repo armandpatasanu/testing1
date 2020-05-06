@@ -1,0 +1,19 @@
+plugins {
+    id 'java'
+}
+
+group 'org.loose.oose'
+version '1.0-SNAPSHOT'
+
+sourceCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testCompile group: 'junit', name: 'junit', version: '4.12'
+    compile group: 'de.jensd', name: 'fontawesomefx', version: '8.9'
+    compile group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version: '2.11.0.rc1'
+    compile 'org.apache.commons:commons-io:1.3.2'
+}
