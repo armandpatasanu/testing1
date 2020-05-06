@@ -3,11 +3,8 @@ package org.loose.oose.fis.project.model;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
-import java.io.File;
 
 public class User {
-
-    private ImageView picture;
     private String description;
     private String phone;
     private String country;
@@ -19,7 +16,9 @@ public class User {
     private String password;
     private String email;
 
-    public User(){}
+    public User(){
+        this.pic_path="resources/profile_photo.png";
+    }
 
     public User(String fn, String ln, String user, String email, String pass)
     {
@@ -28,14 +27,6 @@ public class User {
         this.username=user;
         this.email=email;
         this.password=pass;
-        this.pic_path="resources/profile_photo.png";
-        File file = new File(this.pic_path);
-        Image image = new Image(file.toURI().toString());
-        picture.setImage(image);
-    }
-
-    public void setPicture(ImageView picture) {
-        this.picture = picture;
     }
 
     public void setDescription(String description) {
@@ -119,7 +110,7 @@ public class User {
         result = 31 * result + this.firstName.hashCode();
         result = 31 * result + this.lastName.hashCode();
         result = 31 * result + this.email.hashCode();
-        result = 31 * result + this.picture.hashCode();
+        result = 31* result +this.pic_path.hashCode();
         return result;
     }
 
