@@ -22,6 +22,7 @@ import javafx.scene.text.Text;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
 import javafx.util.Duration;
+import org.loose.oose.fis.project.Tools;
 import org.loose.oose.fis.project.exceptions.UsernameAlreadyExistsException;
 import org.loose.oose.fis.project.model.User;
 import org.loose.oose.fis.project.services.FileSystemService;
@@ -35,8 +36,7 @@ import java.util.Objects;
 import java.util.ResourceBundle;
 import java.util.prefs.Preferences;
 
-import static org.loose.oose.fis.project.services.UserService.checkLoginPassword;
-import static org.loose.oose.fis.project.services.UserService.checkLoginUsername;
+import static org.loose.oose.fis.project.services.UserService.*;
 
 public class loginController implements Initializable {
 
@@ -52,10 +52,7 @@ public class loginController implements Initializable {
     public Button logInButton;
     @FXML
     private Label lblLogin;
-
-    public AnchorPane getRootPane() {
-        return rootPane;
-    }
+    public static User active_user;
 
     @FXML
     private AnchorPane rootPane;
@@ -89,17 +86,12 @@ public class loginController implements Initializable {
         {
             if(checkLoginPassword(password,username))
             {
-                try {
-                    Stage stage = (Stage) logInButton.getScene().getWindow();
-                    Parent mainPage = FXMLLoader.load(getClass().getClassLoader().getResource("mainTab.fxml"));
-                    Scene scene = new Scene(mainPage, 955, 649);
-                    stage.setScene(scene);
-                    Rectangle2D primScreenBounds = Screen.getPrimary().getVisualBounds();
-                    stage.setX((primScreenBounds.getWidth() - stage.getWidth()) / 2);
-                    stage.setY((primScreenBounds.getHeight() - stage.getHeight()) / 2);
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
+                active_user=getUser(username);
+                Stage prevStage = (Stage) logInButton.getScene().getWindow();
+                prevStage.close();
+                Stage stage=new Stage();
+                Stage profileStage = Tools.createProfileStage(stage);
+                profileStage.show();
             }
             else
                 loginErrorText.setText("The password is incorrect!");
@@ -113,7 +105,7 @@ public class loginController implements Initializable {
             rootPane.getChildren().add(viewCreateAccountRoot);
             Timeline timeline=new Timeline();
             KeyValue keyValue=new KeyValue(viewCreateAccountRoot.translateYProperty(),0, Interpolator.EASE_IN);
-            KeyFrame keyFrame=new KeyFrame(Duration.seconds(2),keyValue);
+            KeyFrame keyFrame=new KeyFrame(Duration.seconds(1),keyValue);
             timeline.getKeyFrames().add(keyFrame);
             timeline.play();
             timeline.setOnFinished((ActionEvent event2)->{

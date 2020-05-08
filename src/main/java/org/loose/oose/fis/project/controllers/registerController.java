@@ -19,8 +19,6 @@ import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
-import javafx.stage.Screen;
-import javafx.stage.Stage;
 import javafx.util.Duration;
 import org.loose.oose.fis.project.exceptions.EmailAlreadyUsedException;
 import org.loose.oose.fis.project.exceptions.UsernameAlreadyExistsException;
@@ -124,7 +122,7 @@ public class registerController implements Initializable {
             rootPane.getChildren().add(viewCreateAccountRoot);
             Timeline timeline = new Timeline();
             KeyValue keyValue = new KeyValue(viewCreateAccountRoot.translateYProperty(), 0, Interpolator.EASE_IN);
-            KeyFrame keyFrame = new KeyFrame(Duration.seconds(2), keyValue);
+            KeyFrame keyFrame = new KeyFrame(Duration.seconds(1), keyValue);
             timeline.getKeyFrames().add(keyFrame);
             timeline.play();
             timeline.setOnFinished((ActionEvent event2) -> {

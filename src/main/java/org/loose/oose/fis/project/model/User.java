@@ -1,10 +1,8 @@
 package org.loose.oose.fis.project.model;
 
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
-
-
 public class User {
+
+    private String back_color;
     private String description;
     private String phone;
     private String country;
@@ -16,9 +14,7 @@ public class User {
     private String password;
     private String email;
 
-    public User(){
-        this.pic_path="resources/profile_photo.png";
-    }
+    public User(){ }
 
     public User(String fn, String ln, String user, String email, String pass)
     {
@@ -27,22 +23,56 @@ public class User {
         this.username=user;
         this.email=email;
         this.password=pass;
+        this.pic_path="profile_photo.png";
+        this.back_color="LIGHTGREY";
+    }
+
+    public String getBack_color() {
+        return back_color;
+    }
+
+    public void setBack_color(String back_color) {
+        this.back_color = back_color;
+    }
+
+    public String getDescription() {
+        return description;
     }
 
     public void setDescription(String description) {
         this.description = description;
     }
 
+    public String getPhone() {
+        return phone;
+    }
+
     public void setPhone(String phone) {
         this.phone = phone;
+    }
+
+    public String getCountry() {
+        return country;
     }
 
     public void setCountry(String country) {
         this.country = country;
     }
 
+    public String getCity() {
+        return city;
+    }
+
     public void setCity(String city) {
         this.city = city;
+    }
+
+    public String getPic_path() {
+        return pic_path;
+    }
+
+    public void setPic_path(String pic_path) {
+        this.pic_path = pic_path;
     }
 
     public String getFirstName() {
@@ -110,7 +140,10 @@ public class User {
         result = 31 * result + this.firstName.hashCode();
         result = 31 * result + this.lastName.hashCode();
         result = 31 * result + this.email.hashCode();
-        result = 31* result +this.pic_path.hashCode();
+        result = 31 * result + this.description.hashCode();
+        result = 31 * result + this.city.hashCode();
+        result = 31 * result + this.country.hashCode();
+        result = 31 * result + this.phone.hashCode();
         return result;
     }
 
@@ -120,11 +153,12 @@ public class User {
                 ", username=" + this.username + '\'' +
                 ", password='" + this.password + '\'' +
                 ", email='" + this.email + '\'' +
-                ", description=" + this.lastName + '\'' +
-                ", phone=" + this.lastName + '\'' +
-                ", country=" + this.lastName + '\'' +
-                ", city=" + this.lastName + '\'' +
+                ", description=" + this.city + '\'' +
+                ", phone=" + this.country + '\'' +
+                ", country=" + this.phone + '\'' +
+                ", city=" + this.description + '\'' +
                 ", image=" + this.pic_path + '\'' +
+                ", profile background color=" + this.back_color + '\'' +
                 '}';
     }
 

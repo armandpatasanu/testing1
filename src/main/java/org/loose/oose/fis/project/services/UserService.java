@@ -22,6 +22,13 @@ public class UserService {
     private static List<User> users;
     private static final Path USERS_PATH = FileSystemService.getPathToFile("config", "users.json");
 
+    public static User getUser(String name)
+    {
+        for(User u:users)
+            if (Objects.equals(name, u.getUsername()))
+                return u;
+        return null;
+    }
     public static void loadUsersFromFile() throws IOException {
 
         if (!Files.exists(USERS_PATH)) {
