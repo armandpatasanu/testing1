@@ -70,14 +70,28 @@ public class UserProfileController implements Initializable, EventHandler<Action
     private Text userEmailValue;
     @FXML
     private AnchorPane mainPane;
+    @FXML
+    private Button addVideoButton;
+    @FXML
+    private Button videosButton;
+    @FXML
+    private Button editProfileButton;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         Image im=new Image(active_user.getPic_path());
         profilePic.setFill(new ImagePattern(im));
-        /*
         Color c = null;
         profileBackground.setFill(c.valueOf(active_user.getBack_color()));
+        AnchorPane content = null;
+        try {
+            content = FXMLLoader.load(getClass().getClassLoader().getResource("WatchVideos.fxml"));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        mainPane.getChildren().removeAll();
+        mainPane.getChildren().add(content);
+        /*
         userFullValue.setText(active_user.getFirstName() + " " + active_user.getLastName());
         usernameValue.setText("@" + active_user.getUsername());
         userAdressValue.setText(active_user.getCity() + "," + active_user.getCountry());
@@ -98,26 +112,23 @@ public class UserProfileController implements Initializable, EventHandler<Action
         loginStage.show();
     }
 
-    public void seeVideosList(ActionEvent event) {
-    }
-
-    @FXML
     public void openEditProfileHandler(ActionEvent event) throws IOException {
         AnchorPane content =  FXMLLoader.load(getClass().getClassLoader().getResource("editProfile.fxml"));
         mainPane.getChildren().add(content);
     }
 
-    public void addVideoHandler(ActionEvent event) {
+    public void addVideoHandler(ActionEvent event) throws IOException {
+        AnchorPane content =  FXMLLoader.load(getClass().getClassLoader().getResource("addVideo.fxml"));
+        mainPane.getChildren().removeAll();
+        mainPane.getChildren().add(content);
     }
-    /*
-    public void saveColorHandler(ActionEvent event) {
-        profileBackground.setFill(pickerColor);
-        active_user.setBack_color(pickerColor.toString());
-        System.out.println(active_user.getBack_color());
-        active_user.setCity("Timisoara");
-        System.out.println(active_user.getCity());
-    };
-    */
+
+    public void openVideosHandler(ActionEvent event) throws IOException {
+        AnchorPane content =  FXMLLoader.load(getClass().getClassLoader().getResource("WatchVideos.fxml"));
+        mainPane.getChildren().removeAll();
+        mainPane.getChildren().add(content);
+    }
+
     @Override
     public void handle(ActionEvent event) {
 

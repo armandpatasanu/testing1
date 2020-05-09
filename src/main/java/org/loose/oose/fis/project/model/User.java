@@ -24,7 +24,7 @@ public class User {
         this.email=email;
         this.password=pass;
         this.pic_path="profile_photo.png";
-        this.back_color="LIGHTGREY";
+        this.back_color="#b22222";
     }
 
     public String getBack_color() {

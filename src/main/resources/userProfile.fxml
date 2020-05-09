@@ -11,7 +11,7 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="950.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.loose.oose.fis.project.controllers.UserProfileController">
    <children>
-      <Rectangle fx:id="profileBackground" arcHeight="5.0" arcWidth="5.0" fill="#2e64d0" height="200.0" layoutX="-10.0" layoutY="-3.0" stroke="WHITE" strokeWidth="0.0" width="960.0" />
+      <Rectangle fx:id="profileBackground" arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="200.0" layoutX="-10.0" layoutY="-3.0" stroke="WHITE" strokeWidth="0.0" width="960.0" />
       <AnchorPane layoutY="269.0" prefHeight="382.0" prefWidth="950.0">
          <children>
             <ImageView fitHeight="384.0" fitWidth="948.0" layoutX="2.0" layoutY="-2.0" pickOnBounds="true">
@@ -44,7 +44,7 @@
                   <Font size="18.0" />
                </font>
             </Text>
-            <AnchorPane fx:id="mainPane" layoutX="286.0" layoutY="9.0" prefHeight="360.0" prefWidth="618.0" style="-fx-background-color: #FFFFFF; -fx-border-color: #bac1cc;" />
+            <AnchorPane fx:id="mainPane" layoutX="286.0" layoutY="9.0" prefHeight="360.0" prefWidth="618.0" style="-fx-background-color: #FFFFFF;" />
             <Text fx:id="userEmailValue" layoutX="21.0" layoutY="300.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="240.80338287353516">
                <font>
                   <Font size="18.0" />
@@ -53,10 +53,13 @@
          </children>
       </AnchorPane>
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="73.0" layoutY="196.0" stroke="#bfb6b6" strokeType="INSIDE" strokeWidth="2.0" width="950.0" />
-      <Circle fx:id="profilePic" fill="#fcfcfc" layoutX="142.0" layoutY="224.0" radius="100.0" stroke="#d0c2c2" strokeType="INSIDE" strokeWidth="5.0" />
-      <Button fx:id="logOutButton" layoutX="792.0" layoutY="214.0" mnemonicParsing="false" onAction="#logOutHandler" prefHeight="36.0" prefWidth="110.0" text="Log out" />
-      <Button fx:id="videosButton" layoutX="287.0" layoutY="210.0" mnemonicParsing="false" onAction="#seeVideosList" prefHeight="44.0" prefWidth="108.0" text="Videos" />
-      <Button fx:id="addVideoButton" layoutX="423.0" layoutY="210.0" mnemonicParsing="false" onAction="#addVideoHandler" prefHeight="44.0" prefWidth="108.0" text="Add Video" />
-      <Button fx:id="editProfileButton" layoutX="565.0" layoutY="210.0" mnemonicParsing="false" onAction="#openEditProfileHandler" prefHeight="44.0" prefWidth="108.0" text="Edit Profile" />
+      <Circle fx:id="profilePic" fill="#fcfcfc" layoutX="138.0" layoutY="235.0" radius="83.0" stroke="#d0c2c2" strokeType="INSIDE" strokeWidth="5.0" />
+      <Button fx:id="logOutButton" layoutX="826.0" layoutY="220.0" mnemonicParsing="false" onAction="#logOutHandler" prefHeight="24.0" prefWidth="79.0" stylesheets="@userProfile.css" text="Log out" />
+      <Button fx:id="videosButton" layoutX="287.0" layoutY="210.0" mnemonicParsing="false" onAction="#openVideosHandler" prefHeight="44.0" prefWidth="104.0" stylesheets="@userProfile.css" text="Videos">
+         <font>
+            <Font name="Times New Roman" size="18.0" />
+         </font></Button>
+      <Button fx:id="addVideoButton" layoutX="423.0" layoutY="210.0" mnemonicParsing="false" onAction="#addVideoHandler" prefHeight="44.0" prefWidth="138.0" stylesheets="@userProfile.css" text="Add Video" />
+      <Button fx:id="editProfileButton" layoutX="587.0" layoutY="211.0" mnemonicParsing="false" onAction="#openEditProfileHandler" prefHeight="44.0" prefWidth="138.0" stylesheets="@userProfile.css" text="Edit Profile" />
    </children>
 </AnchorPane>

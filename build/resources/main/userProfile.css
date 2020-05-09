@@ -1,0 +1,61 @@
+#videosButton{
+    -fx-background-color: #FFFFFF;
+    -fx-border-color: #34a88b;
+    -fx-border-radius: 50px 25px;
+    -fx-border-width: 1pt 1pt 1pt 1pt;
+    -fx-text-fill: #354f49;
+    -fx-font-family: Arial;
+    -fx-font-size: 16pt;
+}
+#videosButton:hover{
+  -fx-border-width: 1pt 1pt 1pt 1pt;
+  -fx-border-color: #b22222;
+  -fx-border-radius: 50px 25px;
+  -fx-font-size: 12pt;
+  -fx-font-weight: bold;
+}
+#addVideoButton{
+  -fx-background-color: #FFFFFF;
+  -fx-border-color: #34a88b;
+  -fx-border-radius: 50px 25px;
+  -fx-border-width: 1pt 1pt 1pt 1pt;
+  -fx-text-fill: #354f49;
+  -fx-font-family: Arial;
+  -fx-font-size: 16pt;
+}
+#addVideoButton:hover{
+  -fx-border-width: 1pt 1pt 1pt 1pt;
+  -fx-border-color: #b22222;
+  -fx-border-radius: 50px 25px;
+  -fx-font-size: 12pt;
+  -fx-font-weight: bold;
+}
+#editProfileButton{
+  -fx-background-color: #FFFFFF;
+  -fx-border-color: #34a88b;
+  -fx-border-radius: 50px 25px;
+  -fx-border-width: 1pt 1pt 1pt 1pt;
+  -fx-text-fill: #354f49;
+  -fx-font-family: Arial;
+  -fx-font-size: 16pt;
+}
+#editProfileButton:hover{
+  -fx-border-width: 1pt 1pt 1pt 1pt;
+  -fx-border-color: #b22222;
+  -fx-border-radius: 50px 25px;
+  -fx-font-size: 12pt;
+  -fx-font-weight: bold;
+}
+#logOutButton{
+  -fx-background-color: #FFFFFF;
+  -fx-border-color: #000000;
+  -fx-border-width: 0.8pt 0.8pt 0.8pt 0.8pt;
+  -fx-border-radius: 15px;
+  -fx-font-size: 10pt;
+  -fx-font-family: "Times New Roman";
+}
+#logOutButton:hover{
+  -fx-border-width: 0.5pt 0.5pt 0.5pt 0.5pt;
+  -fx-border-radius: 15px;
+  -fx-border-color: #521270;
+}
