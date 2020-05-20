@@ -15,15 +15,15 @@
    <children>
       <ImageView fitHeight="360.0" fitWidth="618.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@editProfileBackground.jpg" />
+            <Image url="@../images/editProfileBackground.jpg" />
          </image>
       </ImageView>
       <ColorPicker fx:id="backgroundColorPicker" layoutX="405.0" layoutY="89.0" prefHeight="25.0" prefWidth="141.0" />
       <Button fx:id="saveButton" layoutX="261.0" layoutY="314.0" mnemonicParsing="false" onAction="#saveChangesHandler" prefHeight="25.0" prefWidth="120.0" text="Save Changes" />
       <ComboBox fx:id="countryComboBox" layoutX="122.0" layoutY="178.0" prefHeight="25.0" prefWidth="199.0" />
       <TextField fx:id="usersCityValue" layoutX="122.0" layoutY="221.0" prefHeight="25.0" prefWidth="199.0" promptText="exemple: New York" />
-      <TextField layoutX="122.0" layoutY="135.0" prefHeight="25.0" prefWidth="199.0" promptText="enter a new username" />
-      <TextField layoutX="122.0" layoutY="264.0" prefHeight="25.0" prefWidth="199.0" promptText="phone number" />
+      <TextField fx:id="newUsernameValue" layoutX="122.0" layoutY="135.0" prefHeight="25.0" prefWidth="199.0" promptText="enter a new username" />
+      <TextField fx:id="usersNumberValue" layoutX="122.0" layoutY="264.0" prefHeight="25.0" prefWidth="199.0" promptText="phone number" />
       <TextArea fx:id="descriptionTextArea" layoutX="360.0" layoutY="159.0" prefHeight="116.0" prefWidth="230.0" promptText="Enter a brief description..." wrapText="true" />
       <Button fx:id="searchImageButton" layoutX="235.0" layoutY="57.0" mnemonicParsing="false" onAction="#searchImageHandler" prefHeight="25.0" prefWidth="92.0" text="Choose Photo" />
       <Circle fx:id="picturePreview" fill="WHITE" layoutX="191.0" layoutY="70.0" radius="31.0" stroke="#e4c7c7" strokeType="INSIDE" strokeWidth="2.0" />

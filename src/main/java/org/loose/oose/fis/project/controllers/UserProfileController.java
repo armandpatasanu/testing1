@@ -32,6 +32,7 @@ import org.loose.oose.fis.project.Main;
 import org.loose.oose.fis.project.Tools;
 import org.loose.oose.fis.project.model.User;
 import org.loose.oose.fis.project.services.UserService;
+import org.loose.oose.fis.project.services.VideoService;
 
 import java.awt.event.ActionListener;
 import java.io.File;
@@ -41,9 +42,12 @@ import java.util.ResourceBundle;
 import java.util.prefs.Preferences;
 
 import static org.loose.oose.fis.project.controllers.loginController.active_user;
+import static org.loose.oose.fis.project.services.VideoService.loadVideosFromFile;
 
 public class UserProfileController implements Initializable, EventHandler<ActionEvent> {
 
+    @FXML
+    private WatchVideosController wvc;
     @FXML
     private Label description;
     @FXML
@@ -79,18 +83,24 @@ public class UserProfileController implements Initializable, EventHandler<Action
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        try {
+            VideoService.loadVideosFromFile();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
         Image im=new Image(active_user.getPic_path());
         profilePic.setFill(new ImagePattern(im));
         Color c = null;
         profileBackground.setFill(c.valueOf(active_user.getBack_color()));
-        AnchorPane content = null;
+        AnchorPane content= new AnchorPane();
         try {
-            content = FXMLLoader.load(getClass().getClassLoader().getResource("WatchVideos.fxml"));
+            content = FXMLLoader.load(getClass().getClassLoader().getResource("fxml/WatchVideos.fxml"));
         } catch (IOException e) {
             e.printStackTrace();
         }
-        mainPane.getChildren().removeAll();
+        VideoService.putVideo(this);
         mainPane.getChildren().add(content);
+
         /*
         userFullValue.setText(active_user.getFirstName() + " " + active_user.getLastName());
         usernameValue.setText("@" + active_user.getUsername());
@@ -102,6 +112,9 @@ public class UserProfileController implements Initializable, EventHandler<Action
         System.out.println(active_user.getBack_color());
         */
     }
+    public AnchorPane getMainPane() {
+        return mainPane;
+    }
 
     public void logOutHandler(ActionEvent event) throws Exception {
 
@@ -110,23 +123,25 @@ public class UserProfileController implements Initializable, EventHandler<Action
         Stage stage=new Stage();
         Stage loginStage = Tools.createLoginStage(stage);
         loginStage.show();
+
     }
 
     public void openEditProfileHandler(ActionEvent event) throws IOException {
-        AnchorPane content =  FXMLLoader.load(getClass().getClassLoader().getResource("editProfile.fxml"));
+        AnchorPane content =  FXMLLoader.load(getClass().getClassLoader().getResource("fxml/editProfile.fxml"));
         mainPane.getChildren().add(content);
     }
 
     public void addVideoHandler(ActionEvent event) throws IOException {
-        AnchorPane content =  FXMLLoader.load(getClass().getClassLoader().getResource("addVideo.fxml"));
+        AnchorPane content =  FXMLLoader.load(getClass().getClassLoader().getResource("fxml/addVideo.fxml"));
         mainPane.getChildren().removeAll();
         mainPane.getChildren().add(content);
     }
 
     public void openVideosHandler(ActionEvent event) throws IOException {
-        AnchorPane content =  FXMLLoader.load(getClass().getClassLoader().getResource("WatchVideos.fxml"));
+        AnchorPane content =  FXMLLoader.load(getClass().getClassLoader().getResource("fxml/WatchVideos.fxml"));
         mainPane.getChildren().removeAll();
         mainPane.getChildren().add(content);
+        VideoService.putVideo(this);
     }
 
     @Override

@@ -27,15 +27,14 @@ import org.loose.oose.fis.project.exceptions.UsernameAlreadyExistsException;
 import org.loose.oose.fis.project.model.User;
 import org.loose.oose.fis.project.services.FileSystemService;
 import org.loose.oose.fis.project.services.UserService;
+import org.loose.oose.fis.project.services.VideoService;
 
 import java.io.IOException;
 import java.net.URL;
-import java.nio.file.Path;
-import java.util.List;
-import java.util.Objects;
 import java.util.ResourceBundle;
-import java.util.prefs.Preferences;
 
+
+import static org.loose.oose.fis.project.Tools.createProfileStage;
 import static org.loose.oose.fis.project.services.UserService.*;
 
 public class loginController implements Initializable {
@@ -46,8 +45,6 @@ public class loginController implements Initializable {
     private TextField usernameField;
     @FXML
     private PasswordField passwordField;
-    @FXML
-    private Button signUpButton;
     @FXML
     public Button logInButton;
     @FXML
@@ -90,16 +87,18 @@ public class loginController implements Initializable {
                 Stage prevStage = (Stage) logInButton.getScene().getWindow();
                 prevStage.close();
                 Stage stage=new Stage();
-                Stage profileStage = Tools.createProfileStage(stage);
+                Stage profileStage = createProfileStage(stage);
+                VideoService.setVideos();
                 profileStage.show();
             }
             else
+                loginErrorText.setText("The password is incorrect!");
                 loginErrorText.setText("The password is incorrect!");
         }
     }
     public void openCreateAccountHandler(ActionEvent event) throws IOException {
         try {
-            Parent viewCreateAccountRoot = FXMLLoader.load(getClass().getClassLoader().getResource("register.fxml"));
+            Parent viewCreateAccountRoot = FXMLLoader.load(getClass().getClassLoader().getResource("fxml/register.fxml"));
             Scene loginScene=lblLogin.getScene();
             viewCreateAccountRoot.translateYProperty().set(loginScene.getHeight());
             rootPane.getChildren().add(viewCreateAccountRoot);

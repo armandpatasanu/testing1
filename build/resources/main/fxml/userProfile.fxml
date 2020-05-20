@@ -16,7 +16,7 @@
          <children>
             <ImageView fitHeight="384.0" fitWidth="948.0" layoutX="2.0" layoutY="-2.0" pickOnBounds="true">
                <image>
-                  <Image url="@profile_background.jpg" />
+                  <Image url="@../images/profile_background.jpg" />
                </image>
             </ImageView>
             <Text fx:id="userFullValue" fontSmoothingType="LCD" layoutX="52.0" layoutY="83.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-weight: bold;" wrappingWidth="196.4166588592343">
@@ -54,12 +54,12 @@
       </AnchorPane>
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="73.0" layoutY="196.0" stroke="#bfb6b6" strokeType="INSIDE" strokeWidth="2.0" width="950.0" />
       <Circle fx:id="profilePic" fill="#fcfcfc" layoutX="138.0" layoutY="235.0" radius="83.0" stroke="#d0c2c2" strokeType="INSIDE" strokeWidth="5.0" />
-      <Button fx:id="logOutButton" layoutX="826.0" layoutY="220.0" mnemonicParsing="false" onAction="#logOutHandler" prefHeight="24.0" prefWidth="79.0" stylesheets="@userProfile.css" text="Log out" />
-      <Button fx:id="videosButton" layoutX="287.0" layoutY="210.0" mnemonicParsing="false" onAction="#openVideosHandler" prefHeight="44.0" prefWidth="104.0" stylesheets="@userProfile.css" text="Videos">
+      <Button fx:id="logOutButton" layoutX="826.0" layoutY="220.0" mnemonicParsing="false" onAction="#logOutHandler" prefHeight="24.0" prefWidth="79.0" stylesheets="@../css/userProfile.css" text="Log out" />
+      <Button fx:id="videosButton" layoutX="287.0" layoutY="210.0" mnemonicParsing="false" onAction="#openVideosHandler" prefHeight="44.0" prefWidth="104.0" stylesheets="@../css/userProfile.css" text="Videos">
          <font>
             <Font name="Times New Roman" size="18.0" />
          </font></Button>
-      <Button fx:id="addVideoButton" layoutX="423.0" layoutY="210.0" mnemonicParsing="false" onAction="#addVideoHandler" prefHeight="44.0" prefWidth="138.0" stylesheets="@userProfile.css" text="Add Video" />
-      <Button fx:id="editProfileButton" layoutX="587.0" layoutY="211.0" mnemonicParsing="false" onAction="#openEditProfileHandler" prefHeight="44.0" prefWidth="138.0" stylesheets="@userProfile.css" text="Edit Profile" />
+      <Button fx:id="addVideoButton" layoutX="423.0" layoutY="210.0" mnemonicParsing="false" onAction="#addVideoHandler" prefHeight="44.0" prefWidth="138.0" stylesheets="@../css/userProfile.css" text="Add Video" />
+      <Button fx:id="editProfileButton" layoutX="587.0" layoutY="211.0" mnemonicParsing="false" onAction="#openEditProfileHandler" prefHeight="44.0" prefWidth="138.0" stylesheets="@../css/userProfile.css" text="Edit Profile" />
    </children>
 </AnchorPane>

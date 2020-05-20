@@ -17,10 +17,10 @@
     <children>
         <ImageView fitHeight="400.0" fitWidth="708.0" pickOnBounds="true">
             <image>
-                <Image url="@registerback.jpg" />
+                <Image url="@../images/registerback.jpg" />
             </image>
         </ImageView>
-        <AnchorPane layoutX="104.0" layoutY="25.0" opacity="0.7" prefHeight="350.0" prefWidth="500.0" style="-fx-background-color: #ffffff; -fx-border-color: #292B48; -fx-border-width: 6pt;" stylesheets="@register.css">
+        <AnchorPane layoutX="104.0" layoutY="25.0" opacity="0.7" prefHeight="350.0" prefWidth="500.0" style="-fx-background-color: #ffffff; -fx-border-color: #292B48; -fx-border-width: 6pt;" stylesheets="@../css/register.css">
             <children>
                 <TextField fx:id="userfield" layoutX="241.0" layoutY="175.0" prefHeight="25.0" prefWidth="181.0" promptText="Username" />
                 <TextField fx:id="emailfield" layoutX="241.0" layoutY="209.0" prefHeight="25.0" prefWidth="181.0" promptText="E-mail" />

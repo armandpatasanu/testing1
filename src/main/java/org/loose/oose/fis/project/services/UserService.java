@@ -3,6 +3,7 @@ package org.loose.oose.fis.project.services;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.apache.commons.io.FileUtils;
+import org.loose.oose.fis.project.controllers.WatchVideosController;
 import org.loose.oose.fis.project.exceptions.CouldNotWriteUsersException;
 import org.loose.oose.fis.project.exceptions.EmailAlreadyUsedException;
 import org.loose.oose.fis.project.exceptions.UsernameAlreadyExistsException;
@@ -20,7 +21,7 @@ import java.util.Objects;
 public class UserService {
 
     private static List<User> users;
-    private static final Path USERS_PATH = FileSystemService.getPathToFile("config", "users.json");
+    private static final Path USERS_PATH = FileSystemService.getPathToFile("config", "json/users.json");
 
     public static User getUser(String name)
     {
@@ -32,7 +33,7 @@ public class UserService {
     public static void loadUsersFromFile() throws IOException {
 
         if (!Files.exists(USERS_PATH)) {
-            FileUtils.copyURLToFile(UserService.class.getClassLoader().getResource("users.json"), USERS_PATH.toFile());
+            FileUtils.copyURLToFile(UserService.class.getClassLoader().getResource("json/users.json"), USERS_PATH.toFile());
         }
 
         ObjectMapper objectMapper = new ObjectMapper();
@@ -40,7 +41,6 @@ public class UserService {
         users = objectMapper.readValue(USERS_PATH.toFile(), new TypeReference<List<User>>() {
         });
     }
-
     public static boolean checkLoginUsername(String username)  {
         for (User user : users) {
             if (Objects.equals(username, user.getUsername()))
@@ -68,6 +68,15 @@ public class UserService {
         users.add(new User(fname,lname,username,email,encodePassword(username, password)));
         persistUsers();
     }
+    public static void updateUser(User user)
+    {
+        for( User u:users)
+        {
+            if (Objects.equals(u.getEmail(), user.getEmail()))
+                users.remove(u);
+                users.add(user);
+        }
+    }
 
     public static boolean checkLoginPassword(String password,String username)
     {
@@ -80,7 +89,7 @@ public class UserService {
         return false;
     }
 
-    private static void persistUsers() {
+    public static void persistUsers() {
         try {
             ObjectMapper objectMapper = new ObjectMapper();
             objectMapper.writerWithDefaultPrettyPrinter().writeValue(USERS_PATH.toFile(), users);

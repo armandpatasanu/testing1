@@ -21,7 +21,7 @@
     <children>
         <ImageView fitHeight="400.0" fitWidth="708.0" nodeOrientation="INHERIT">
             <image>
-                <Image url="@login_background.jpg" />
+                <Image url="@../images/login_background.jpg" />
             </image>
         </ImageView>
         <AnchorPane fx:id="anchorPane" layoutX="388.0" layoutY="53.0" opacity="0.72" prefHeight="328.0" prefWidth="260.0" style="-fx-background-color: #ffffff; -fx-border-color: #282B45;">
@@ -38,7 +38,7 @@
                         <Font name="System Bold" size="16.0" />
                     </font>
                 </Label>
-                <Button fx:id="logInButton" alignment="CENTER" layoutX="116.0" layoutY="253.0" mnemonicParsing="false" onAction="#handleLoginAction" prefHeight="27.0" prefWidth="53.0" stylesheets="@login.css" text="Log in">
+                <Button fx:id="logInButton" alignment="CENTER" layoutX="116.0" layoutY="253.0" mnemonicParsing="false" onAction="#handleLoginAction" prefHeight="27.0" prefWidth="53.0" stylesheets="@../css/login.css" text="Log in">
                     <cursor>
                         <Cursor fx:constant="HAND" />
                     </cursor></Button>
@@ -57,13 +57,13 @@
             <children>
                 <ImageView fitHeight="343.0" fitWidth="389.0" layoutX="-57.0" layoutY="-72.0" opacity="0.15" pickOnBounds="true">
                     <image>
-                        <Image url="@back_image2.png" />
+                        <Image url="@../images/back_image2.png" />
                     </image>
                     <effect>
                         <Blend mode="OVERLAY" />
                     </effect>
                 </ImageView>
-                <Button fx:id="signUpButton" layoutX="96.0" layoutY="166.0" mnemonicParsing="false" onAction="#openCreateAccountHandler" stylesheets="@login.css" text="Sign up now">
+                <Button fx:id="signUpButton" layoutX="96.0" layoutY="166.0" mnemonicParsing="false" onAction="#openCreateAccountHandler" stylesheets="@../css/login.css" text="Sign up now">
                     <cursor>
                         <Cursor fx:constant="HAND" />
                     </cursor>

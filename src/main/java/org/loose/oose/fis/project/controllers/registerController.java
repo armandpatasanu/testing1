@@ -4,13 +4,10 @@ import javafx.animation.Interpolator;
 import javafx.animation.KeyFrame;
 import javafx.animation.KeyValue;
 import javafx.animation.Timeline;
-import javafx.embed.swing.JFXPanel;
 import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.geometry.Rectangle2D;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -52,9 +49,6 @@ public class registerController implements Initializable {
         System.exit(0);
     }
 
-    private static double xOffset = 0;
-    private static double yOffset = 0;
-
     public void createAccountHandler(ActionEvent event) {
         String firstname = fnamefield.getText();
         String lastname = lnamefield.getText();
@@ -79,13 +73,14 @@ public class registerController implements Initializable {
             registerMessage.setText("Password cannot be empty");
             return;
         }
-        if (email == null || email.isEmpty()) {
+        if (email == null || email.isEmpty())
+        {
             registerMessage.setText("A valid email must be entered!");
             return;
         } else
             try {
                 UserService.addUser(fnamefield.getText(), lnamefield.getText(), userfield.getText(), emailfield.getText(), passwordfield.getText());
-                Parent viewCreateAccountRoot = FXMLLoader.load(getClass().getClassLoader().getResource("login.fxml"));
+                Parent viewCreateAccountRoot = FXMLLoader.load(getClass().getClassLoader().getResource("fxml/login.fxml"));
                 Scene registerScene = lblRegister.getScene();
                 viewCreateAccountRoot.translateYProperty().set(registerScene.getHeight());
                 AnchorPane rootPane = (AnchorPane) registerScene.getRoot();
@@ -115,7 +110,7 @@ public class registerController implements Initializable {
     public void backToLoginHandler(ActionEvent event) throws IOException
     {
         try {
-            Parent viewCreateAccountRoot = FXMLLoader.load(getClass().getClassLoader().getResource("login.fxml"));
+            Parent viewCreateAccountRoot = FXMLLoader.load(getClass().getClassLoader().getResource("fxml/login.fxml"));
             Scene registerScene = lblRegister.getScene();
             viewCreateAccountRoot.translateYProperty().set(registerScene.getHeight());
             AnchorPane rootPane = (AnchorPane) registerScene.getRoot();

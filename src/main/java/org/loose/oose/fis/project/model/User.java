@@ -23,7 +23,7 @@ public class User {
         this.username=user;
         this.email=email;
         this.password=pass;
-        this.pic_path="profile_photo.png";
+        this.pic_path= "images/profile_photo.png";
         this.back_color="#b22222";
     }
 

@@ -6,10 +6,11 @@ import javafx.geometry.Rectangle2D;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.paint.Color;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
+
+import java.util.Objects;
 
 public class Tools {
     private static double xOffset = 0;
@@ -17,7 +18,7 @@ public class Tools {
 
     public static Stage createLoginStage(Stage primaryStage) throws java.io.IOException {
 
-        Parent root = FXMLLoader.load(Tools.class.getClassLoader().getResource("login.fxml"));
+        Parent root = FXMLLoader.load(Tools.class.getClassLoader().getResource("fxml/login.fxml"));
         primaryStage.setTitle("Video Platform");
         primaryStage.setScene(new Scene(root, 708, 400));
         primaryStage.initStyle(StageStyle.UNDECORATED);
@@ -42,7 +43,7 @@ public class Tools {
     }
     public static Stage createProfileStage(Stage primaryStage) throws java.io.IOException {
 
-        Parent root = FXMLLoader.load(Tools.class.getClassLoader().getResource("userProfile.fxml"));
+        Parent root = FXMLLoader.load(Objects.requireNonNull(Tools.class.getClassLoader().getResource("fxml/userProfile.fxml")));
         primaryStage.setTitle("Video Platform");
         primaryStage.setScene(new Scene(root, 950, 650));
         primaryStage.initStyle(StageStyle.UNDECORATED);
