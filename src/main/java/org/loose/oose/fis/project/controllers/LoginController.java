@@ -37,7 +37,7 @@ import java.util.ResourceBundle;
 import static org.loose.oose.fis.project.Tools.createProfileStage;
 import static org.loose.oose.fis.project.services.UserService.*;
 
-public class loginController implements Initializable {
+public class LoginController implements Initializable {
 
     @FXML
     private Text loginErrorText;
@@ -65,7 +65,7 @@ public class loginController implements Initializable {
 
     }
 
-    public void handleLoginAction() throws IOException {
+    public void handleLoginAction() throws Exception {
 
         UserService.loadUsersFromFile();
         String username = usernameField.getText();
@@ -98,7 +98,7 @@ public class loginController implements Initializable {
     }
     public void openCreateAccountHandler(ActionEvent event) throws IOException {
         try {
-            Parent viewCreateAccountRoot = FXMLLoader.load(getClass().getClassLoader().getResource("fxml/register.fxml"));
+            Parent viewCreateAccountRoot = FXMLLoader.load(getClass().getClassLoader().getResource("fxml/Register.fxml"));
             Scene loginScene=lblLogin.getScene();
             viewCreateAccountRoot.translateYProperty().set(loginScene.getHeight());
             rootPane.getChildren().add(viewCreateAccountRoot);

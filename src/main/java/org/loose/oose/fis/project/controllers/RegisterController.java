@@ -25,7 +25,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class registerController implements Initializable {
+public class RegisterController implements Initializable {
     @FXML
     private Button createAccButton;
     @FXML
@@ -80,7 +80,7 @@ public class registerController implements Initializable {
         } else
             try {
                 UserService.addUser(fnamefield.getText(), lnamefield.getText(), userfield.getText(), emailfield.getText(), passwordfield.getText());
-                Parent viewCreateAccountRoot = FXMLLoader.load(getClass().getClassLoader().getResource("fxml/login.fxml"));
+                Parent viewCreateAccountRoot = FXMLLoader.load(getClass().getClassLoader().getResource("fxml/Login.fxml"));
                 Scene registerScene = lblRegister.getScene();
                 viewCreateAccountRoot.translateYProperty().set(registerScene.getHeight());
                 AnchorPane rootPane = (AnchorPane) registerScene.getRoot();
@@ -110,7 +110,7 @@ public class registerController implements Initializable {
     public void backToLoginHandler(ActionEvent event) throws IOException
     {
         try {
-            Parent viewCreateAccountRoot = FXMLLoader.load(getClass().getClassLoader().getResource("fxml/login.fxml"));
+            Parent viewCreateAccountRoot = FXMLLoader.load(getClass().getClassLoader().getResource("fxml/Login.fxml"));
             Scene registerScene = lblRegister.getScene();
             viewCreateAccountRoot.translateYProperty().set(registerScene.getHeight());
             AnchorPane rootPane = (AnchorPane) registerScene.getRoot();

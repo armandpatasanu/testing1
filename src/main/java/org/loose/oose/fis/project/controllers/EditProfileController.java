@@ -13,11 +13,12 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.paint.Color;
 import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Circle;
+import javafx.scene.text.Text;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
-import org.json.JSONObject;
 import org.loose.oose.fis.project.services.UserService;
 
 import java.io.File;
@@ -26,7 +27,7 @@ import java.net.URL;
 import java.util.Locale;
 import java.util.ResourceBundle;
 
-import static org.loose.oose.fis.project.controllers.loginController.active_user;
+import static org.loose.oose.fis.project.controllers.LoginController.active_user;
 
 public class EditProfileController implements Initializable {
 
@@ -48,7 +49,7 @@ public class EditProfileController implements Initializable {
     @FXML
     private TextField usersNumberValue;
     @FXML
-    private TextField newUsernameValue;
+    private Text editProfileError;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -79,20 +80,58 @@ public class EditProfileController implements Initializable {
         });
     }
     public void saveChangesHandler(ActionEvent event) {
-        String new_username= newUsernameValue.getText();
-        if(new_username!=null || (!new_username.isEmpty()))
+        String new_city= usersCityValue.getText();
+        String new_phone= usersNumberValue.getText();
+        String new_description= descriptionTextArea.getText();
+        String new_country=  countryComboBox.getValue();
+        Color c= backgroundColorPicker.getValue();
+
+        if(new_city==null || (new_city.isEmpty()))
         {
-            active_user.setUsername(new_username);
+            usersCityValue.setText("enter a city");
+            usersCityValue.setStyle("-fx-font-color:#c31c1c");
+            return;
         }
+        if(new_phone==null || (new_phone.isEmpty()))
+        {
+            usersNumberValue.setText("enter a valid phone number");
+            usersNumberValue.setStyle("-fx-font-color:#c31c1c");
+            return;
+        }
+        if(new_description==null || (new_description.isEmpty()))
+        {
+            descriptionTextArea.setText("enter a description");
+            descriptionTextArea.setStyle("-fx-font-color:#c31c1c");
+            return;
+        }
+        if(new_country==null)
+        {
+            editProfileError.setText("Alegeti o tara valida!");
+            return;
+        }
+        if(c.equals(active_user.getBack_color()))
+        {
+            editProfileError.setText("Alegeti o culoare de background!");
+            return;
+        }
+        active_user.setCity(new_city);
+        active_user.setPhone(new_phone);
+        active_user.setBack_color(c.toString());
+        active_user.setDescription(new_description);
+        active_user.setCountry(new_country);
         UserService.persistUsers();
+        usersCityValue.clear();
+        usersNumberValue.clear();
+        descriptionTextArea.clear();
+        System.out.println("Profil editat cu succes!");
     };
-    public void searchImageHandler(ActionEvent event) throws IOException {
+    public void searchNewImageHandler(ActionEvent event) throws IOException {
         final FileChooser filechooser = new FileChooser();
         Stage stage = (Stage) mainPane.getScene().getWindow();
         File file= filechooser.showOpenDialog(stage);
         if(file!=null)
         {
-            Image im = new Image(file.toURI().toString());
+            Image im = new Image(file.toURI().toString(),150,120,true,false);
             picturePreview.setFill(new ImagePattern(im));
             active_user.setPic_path(file.toURI().toString());
         }

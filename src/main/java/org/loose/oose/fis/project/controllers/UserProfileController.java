@@ -1,53 +1,35 @@
 package org.loose.oose.fis.project.controllers;
 
 import javafx.event.ActionEvent;
-import javafx.event.Event;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.geometry.Rectangle2D;
-import javafx.scene.Node;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.ColorPicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Text;
-import javafx.scene.web.WebView;
-import javafx.stage.Screen;
 import javafx.stage.Stage;
 
-import javafx.stage.StageStyle;
-import org.loose.oose.fis.project.Main;
 import org.loose.oose.fis.project.Tools;
-import org.loose.oose.fis.project.model.User;
-import org.loose.oose.fis.project.services.UserService;
 import org.loose.oose.fis.project.services.VideoService;
 
-import java.awt.event.ActionListener;
-import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
-import java.util.prefs.Preferences;
 
-import static org.loose.oose.fis.project.controllers.loginController.active_user;
-import static org.loose.oose.fis.project.services.VideoService.loadVideosFromFile;
+import static org.loose.oose.fis.project.controllers.LoginController.active_user;
 
 public class UserProfileController implements Initializable, EventHandler<ActionEvent> {
 
     @FXML
-    private WatchVideosController wvc;
+    private static WatchVideosController wvc;
     @FXML
     private Label description;
     @FXML
@@ -63,7 +45,7 @@ public class UserProfileController implements Initializable, EventHandler<Action
     @FXML
     private Text userAdressValue;
     @FXML
-    private Text userDescriptionValue;
+    private Label userDescriptionValue;
     @FXML
     private Text userPhoneValue;
     @FXML
@@ -74,43 +56,27 @@ public class UserProfileController implements Initializable, EventHandler<Action
     private Text userEmailValue;
     @FXML
     private AnchorPane mainPane;
-    @FXML
-    private Button addVideoButton;
-    @FXML
-    private Button videosButton;
-    @FXML
-    private Button editProfileButton;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        try {
-            VideoService.loadVideosFromFile();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
         Image im=new Image(active_user.getPic_path());
         profilePic.setFill(new ImagePattern(im));
         Color c = null;
         profileBackground.setFill(c.valueOf(active_user.getBack_color()));
-        AnchorPane content= new AnchorPane();
-        try {
-            content = FXMLLoader.load(getClass().getClassLoader().getResource("fxml/WatchVideos.fxml"));
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        VideoService.putVideo(this);
-        mainPane.getChildren().add(content);
-
-        /*
         userFullValue.setText(active_user.getFirstName() + " " + active_user.getLastName());
         usernameValue.setText("@" + active_user.getUsername());
         userAdressValue.setText(active_user.getCity() + "," + active_user.getCountry());
         userDescriptionValue.setText(active_user.getDescription());
         userPhoneValue.setText(active_user.getPhone());
         userEmailValue.setText(active_user.getEmail());
-        backgroundColorPicker.setOnAction(e -> pickerColor = backgroundColorPicker.getValue());
         System.out.println(active_user.getBack_color());
-        */
+        AnchorPane content= new AnchorPane();
+        try {
+            content = FXMLLoader.load(getClass().getClassLoader().getResource("fxml/WatchVideos.fxml"));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        mainPane.getChildren().add(content);
     }
     public AnchorPane getMainPane() {
         return mainPane;
@@ -127,21 +93,21 @@ public class UserProfileController implements Initializable, EventHandler<Action
     }
 
     public void openEditProfileHandler(ActionEvent event) throws IOException {
-        AnchorPane content =  FXMLLoader.load(getClass().getClassLoader().getResource("fxml/editProfile.fxml"));
+        AnchorPane content =  FXMLLoader.load(getClass().getClassLoader().getResource("fxml/EditProfile.fxml"));
         mainPane.getChildren().add(content);
     }
 
     public void addVideoHandler(ActionEvent event) throws IOException {
-        AnchorPane content =  FXMLLoader.load(getClass().getClassLoader().getResource("fxml/addVideo.fxml"));
+        AnchorPane content =  FXMLLoader.load(getClass().getClassLoader().getResource("fxml/AddVideo.fxml"));
         mainPane.getChildren().removeAll();
         mainPane.getChildren().add(content);
     }
 
-    public void openVideosHandler(ActionEvent event) throws IOException {
+    public void openVideosHandler(ActionEvent event) throws Exception {
         AnchorPane content =  FXMLLoader.load(getClass().getClassLoader().getResource("fxml/WatchVideos.fxml"));
         mainPane.getChildren().removeAll();
         mainPane.getChildren().add(content);
-        VideoService.putVideo(this);
+        VideoService.setVideos();
     }
 
     @Override

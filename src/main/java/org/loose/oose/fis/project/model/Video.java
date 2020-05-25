@@ -17,21 +17,19 @@ public class Video {
     private String category;
     private int likes;
     private int dislikes;
-    private Button editButton = new Button("Edit");
-    private Button deleteButton = new Button("Delete");
-    private HBox videoCell = new HBox();
 
-    public Video() {}
+    public Video() {
+    }
 
-    public Video(String user,String title, String category, String description,String vpath)
-    {
+    public Video(String user, String title, String category, String description, String vpath, String vthumbnail) {
         this.title = title;
         this.description = description;
-        this.category=category;
-        this.video_path=vpath;
-        this.likes=0;
-        this.dislikes=0;
-        this.uploader=user;
+        this.category = category;
+        this.video_path = vpath;
+        this.likes = 0;
+        this.dislikes = 0;
+        this.uploader = user;
+        this.thumbnail_path = vthumbnail;
     }
 
     public String getThumbnail_path() {
@@ -103,11 +101,7 @@ public class Video {
         if (this == o) return true;
         if (!(o instanceof Video)) return false;
         Video video = (Video) o;
-        return getVideo_path().equals(video.getVideo_path());
+        return getTitle().equals(video.getTitle());
     }
 
-    @Override
-    public int hashCode() {
-        return Objects.hash(getVideo_path());
-    }
 }
